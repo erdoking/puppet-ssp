@@ -15,34 +15,42 @@ This module install and configure Self Service Password. A web interface to chan
 
 ## Description
 
-Briefly tell users why they might want to use your module. Explain what your module does and what kind of problems users can solve with it.
-
-This should be a fairly short description helps the user decide if your module is what they want.
+Self Service Password permits users to change their password and SSH public key in an LDAP directory.
 
 ## Setup
 
-### What ssp affects **OPTIONAL**
+### What ssp affects
 
-If it's obvious what your module touches, you can skip this section. For example, folks can probably figure out that your mysql_instance module affects their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* Files, packages, services, or operations that the module will alter, impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
+Excepted git, the module does not affect your system. It just download SSP and configure it.
 
 ### Setup Requirements
 
 The `system_owner` that own the file of Self Service Password must already exists. The module does not create it.
 
+You have to setup a webserver with PHP. Because we do not want to make choise for you about your architecture.
 
-### Beginning with ssp
-
-The very basic steps needed for a user to get the module up and running. This can include setup steps, if necessary, or it can be an example of the most basic use of the module.
+So you can use apache or nginx, simple PHP or php-FMP.
 
 ## Usage
 
-Include usage examples for common use cases in the **Usage** section. Show your users how to use your module to solve problems, and be sure to include code examples. Include three to five examples of the most important or common tasks a user can accomplish with your module. Show users how to accomplish more complex tasks that involve different types, classes, and functions working in tandem.
+The following code :
+ * download the default version of SSP to the default path.
+ * inodes are owned by already existing system account `ssp`.
+ * configure some settings.
+
+```
+  class { 'ssp' :
+    system_owner      => 'ssp',
+    ldap_binddn       => 'uid=bindssp,cn=sysaccounts,cn=etc,dc=example,dc=com',
+    ldap_bindpw       => 'bindpw',
+    ldap_base         => 'cn=users,cn=accounts,dc=example,dc=com',
+    ldap_whochange_pw => 'admin',
+    mail_from         => 'admin@example.com',
+    manage_git        => true,
+    ldap_url          => ['ldap://10.10.10.10'],
+  }
+```
+
 
 ## Reference
 
