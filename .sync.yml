@@ -39,7 +39,7 @@ appveyor.yml:
           BEAKER_IS_PE: 'no'
           BEAKER_PUPPET_COLLECTION: 'puppet5'
           BEAKER_debug: 'true'
-          BEAKER_setfile: 'ubuntu1804-64'
+          BEAKER_setfile: 'ubuntu1804-64ssp.m{hostname=ssp.example.com}-centos7-64ipa.a{hostname=ipa.example.com}'
           BEAKER_HYPERVISOR: 'docker'
         script:
           - bundle exec rake beaker
