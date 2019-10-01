@@ -1,0 +1,136 @@
+<%- | String $ldap_urls,
+      Boolean $use_sms,
+      Boolean $use_tokens,
+      Boolean $crypt_tokens,
+      Boolean $use_questions,
+      String $keyphrase,
+| -%>
+<?php
+# file under puppet control
+
+
+# LDAP
+$ldap_url = "<%= $ldap_urls %>";
+$ldap_starttls = <%= $ssp::ldap_starttls %>;
+$ldap_binddn = "<%= $ssp::ldap_binddn %>";
+$ldap_bindpw = "<%= $ssp::ldap_bindpw %>";
+$ldap_base = "<%= $ssp::ldap_base %>";
+$ldap_login_attribute = "<%= $ssp::ldap_login_attribute %>";
+$ldap_fullname_attribute = "<%= $ssp::ldap_fullname_attribute %>";
+$ldap_filter = "<%= $ssp::ldap_filter %>";
+
+# Local password policy
+# This is applied before directory password policy
+# Minimal length
+$pwd_min_length = <%= $ssp::pwd_min_length %>;
+# Maximal length
+$pwd_max_length = <%= $ssp::pwd_max_length %>;
+# Minimal lower characters
+$pwd_min_lower = <%= $ssp::pwd_min_lower %>;
+# Minimal upper characters
+$pwd_min_upper = <%= $ssp::pwd_min_upper %>;
+# Minimal digit characters
+$pwd_min_digit = <%= $ssp::pwd_min_digit %>;
+# Minimal special characters
+$pwd_min_special = <%= $ssp::pwd_min_special %>;
+<% if $ssp::pwd_special_chars { -%>
+# Definition of special characters
+$pwd_special_chars = "<%= $ssp::pwd_special_chars %>";
+<% } -%>
+<% if $ssp::pwd_forbidden_chars { -%>
+# Forbidden characters
+#$pwd_forbidden_chars = "<%= $ssp::pwd_forbidden_chars %>";
+<% } -%>
+# Don't reuse the same password as currently
+$pwd_no_reuse = <%= $ssp::pwd_no_reuse %>;
+# Check that password is different than login
+$pwd_diff_login = <%= $ssp::pwd_diff_login %>;
+# Complexity: number of different class of character required
+$pwd_complexity = <%= $ssp::pwd_complexity %>;
+# Show policy constraints message:
+$pwd_show_policy = "<%= $ssp::pwd_show_policy %>";
+# Position of password policy constraints message:
+$pwd_show_policy_pos = "<%= $ssp::pwd_show_policy_pos %>";
+# disallow use of the only special character as defined in `$pwd_special_chars` at the beginning and end
+$pwd_no_special_at_ends = <%= $ssp::pwd_no_special_at_ends %>;
+
+# Who changes the password?
+# Also applicable for question/answer save
+# user: the user itself
+# manager: the above binddn
+$who_change_password = "<%= $ssp::ldap_whochange_pw %>";
+
+## SSH Key Change
+# Allow changing of sshPublicKey?
+$change_sshkey = <%= $ssp::allow_change_sshkey %>;
+# What attribute should be changed by the changesshkey action?
+$change_sshkey_attribute = "<%= $ssp::change_sshkey_attribute %>";
+# Who changes the sshPublicKey attribute?
+# Also applicable for question/answer save
+# user: the user itself
+# manager: the above binddn
+$who_change_sshkey = "<%= $ssp::ldap_whochange_sshkey %>";
+# Notify users anytime their sshPublicKey is changed
+## Requires mail configuration below
+$notify_on_sshkey_change = <%= $ssp::notify_on_sshkey_change %>;
+
+## Questions/answers
+# Use questions/answers?
+$use_questions = <%= $use_questions %>;
+
+## Token
+# Use tokens?
+$use_tokens = <%= $use_tokens %>;
+# Crypt tokens?
+$crypt_tokens = <%= $crypt_tokens %>;
+# Token lifetime in seconds
+$token_lifetime = "<%= $ssp::token_lifetime %>";
+# with ciphered tokens a keyphrase is needed
+$keyphrase = "<%= $keyphrase %>";
+
+## Mail
+# Who the email should come from
+$mail_from = "<%= $ssp::mail_from %>";
+$mail_from_name = "<%= $ssp::mail_from_name %>";
+$mail_signature = "<%= $ssp::mail_signature %>";
+# Notify users anytime their password is changed
+$notify_on_change = <%= $ssp::notify_on_change %>;
+# PHPMailer configuration (see https://github.com/PHPMailer/PHPMailer)
+$mail_sendmailpath = '<%= $ssp::mail_sendmailpath %>';
+$mail_smtp_host = '<%= $ssp::mail_smtp_host %>';
+$mail_smtp_port = <%= $ssp::mail_smtp_port %>;
+$mail_smtp_auth = <%= $ssp::mail_smtp_auth %>;
+<% if $ssp::mail_smtp_auth { -%>
+$mail_smtp_user = '<%= $ssp::mail_smtp_user %>';
+<% } -%>
+<% if $ssp::mail_smtp_auth { -%>
+$mail_smtp_pass = '<%= $ssp::mail_smtp_pass %>';
+<% } -%>
+
+## SMS
+# Use sms
+$use_sms = <%= $use_sms %>;
+
+<% if $ssp::obscure_failure_messages { -%>
+# Hide some messages to not disclose sensitive information
+# These messages will be replaced by badcredentials error
+$obscure_failure_messages = array("<%= $ssp::obscure_failure_messages %>");
+<% } -%>
+
+<% if $ssp::login_forbidden_chars { -%>
+# Invalid characters in login
+# Set at least "*()&|" to prevent LDAP injection
+# If empty, only alphanumeric characters are accepted
+$login_forbidden_chars = "<%= $ssp::login_forbidden_chars %>";
+<% } -%>
+
+<% if $ssp::logo { -%>
+# Logo
+$logo = "<%= $ssp::logo %>";
+<% } -%>
+<% if $ssp::background_image { -%>
+# Background image
+$background_image = "<%= $ssp::background_image %>";
+<% } -%>
+
+?>
