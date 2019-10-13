@@ -27,7 +27,7 @@ RSpec.configure do |c|
       $sysuser = 'ssp'
       accounts::user { $sysuser :}
 
-      package { ['php-mbstring', 'php-ldap']:
+      package { ['php-mbstring', 'php-ldap', 'php-xml']:
         ensure => present,
       }
       ->
