@@ -2,9 +2,9 @@
   "name": "adullact-ssp",
   "version": "0.1.0",
   "author": "ADULLACT",
-  "summary": "",
+  "summary": "Web interface to change and reset password in an LDAP directory http://ltb-project.org",
   "license": "AGPL-3.0",
-  "source": "",
+  "source": "https://gitlab.adullact.net/adullact/puppet-ssp.git",
   "dependencies": [
     {
       "name": "puppetlabs/vcsrepo",
@@ -19,7 +19,15 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
+        "16.04",
         "18.04"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "9",
+        "10"
       ]
     }
   ],
