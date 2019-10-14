@@ -5,6 +5,8 @@
   "summary": "Web interface to change and reset password in an LDAP directory http://ltb-project.org",
   "license": "AGPL-3.0",
   "source": "https://gitlab.adullact.net/adullact/puppet-ssp.git",
+  "project_page": "https://gitlab.adullact.net/adullact/puppet-ssp/",
+  "issues_url": "https://gitlab.adullact.net/adullact/puppet-ssp/issues",
   "dependencies": [
     {
       "name": "puppetlabs/vcsrepo",
