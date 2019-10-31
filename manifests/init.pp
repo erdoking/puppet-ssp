@@ -38,6 +38,8 @@
 #   Hide some messages to not disclose sensitive information.
 #   These messages will be replaced by value of obscure_failure_messages.
 # @param default_action Default action displayed by the webui
+# @param use_tokens enable (with true) or disable (with false) tokens usage.
+# @param crypt_tokens crypt tokens (with true) or no (with false)
 # @param token_lifetime When token are used, the token lifetime.
 # @param mail_address_use_ldap Mail is got from LDAP.
 # @param mail_from Who the email should come from
@@ -66,7 +68,6 @@
 # @param pwd_no_special_at_ends Disallow use of the only special character as defined in `$pwd_special_chars` at the beginning and end
 # @param allow_change_sshkey If true allow changing of sshPublicKey
 # @param change_sshkey_attribute What attribute should be changed by the changesshkey action
-# @param who_change_sshkey Who changes the sshPublicKey attribute
 # @param notify_on_sshkey_change Notify users anytime their sshPublicKey is changed
 #
 class ssp (
@@ -93,6 +94,8 @@ class ssp (
   Optional[String[1]] $login_forbidden_chars = undef,
   Optional[String[1]] $obscure_failure_messages = undef,
   Enum['change','sendtoken'] $default_action = 'change',
+  Boolean $use_tokens = true,
+  Boolean $crypt_tokens = true,
   Integer $token_lifetime = 3600,
   Boolean $mail_address_use_ldap = true,
   Pattern['^.+@.+'] $mail_from = "admin@${facts['networking']['domain']}",
@@ -131,8 +134,6 @@ class ssp (
   $_keyphrase = "${facts['hostname']}${_keynumber}"
   $_ldap_urls = join($ldap_url, ' ')
   $_use_sms = false
-  $_use_tokens = true
-  $_crypt_tokens = true
   $_use_questions = false
 
   if $manage_git {
@@ -188,8 +189,6 @@ class ssp (
       'ldap_urls'     => $_ldap_urls,
       'use_sms'       => $_use_sms,
       'use_questions' => $_use_questions,
-      'use_tokens'    => $_use_tokens,
-      'crypt_tokens'  => $_crypt_tokens,
       'keyphrase'     => $_keyphrase,
       }),
     require => Vcsrepo["${system_rootpath}/ssp_${version_tag}"],

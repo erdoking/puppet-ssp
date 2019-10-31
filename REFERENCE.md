@@ -201,6 +201,22 @@ Default action displayed by the webui
 
 Default value: 'change'
 
+##### `use_tokens`
+
+Data type: `Boolean`
+
+enable (with true) or disable (with false) tokens usage.
+
+Default value: `true`
+
+##### `crypt_tokens`
+
+Data type: `Boolean`
+
+crypt tokens (with true) or no (with false)
+
+Default value: `true`
+
 ##### `token_lifetime`
 
 Data type: `Integer`
@@ -424,10 +440,6 @@ Data type: `String`
 What attribute should be changed by the changesshkey action
 
 Default value: 'sshPublicKey'
-
-##### `who_change_sshkey`
-
-Who changes the sshPublicKey attribute
 
 ##### `notify_on_sshkey_change`
 
