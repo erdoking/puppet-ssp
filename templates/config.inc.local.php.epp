@@ -1,7 +1,5 @@
 <%- | String $ldap_urls,
       Boolean $use_sms,
-      Boolean $use_tokens,
-      Boolean $crypt_tokens,
       Boolean $use_questions,
       String $keyphrase,
 | -%>
@@ -80,9 +78,9 @@ $use_questions = <%= $use_questions %>;
 
 ## Token
 # Use tokens?
-$use_tokens = <%= $use_tokens %>;
+$use_tokens = <%= $ssp::use_tokens %>;
 # Crypt tokens?
-$crypt_tokens = <%= $crypt_tokens %>;
+$crypt_tokens = <%= $ssp::crypt_tokens %>;
 # Token lifetime in seconds
 $token_lifetime = "<%= $ssp::token_lifetime %>";
 # with ciphered tokens a keyphrase is needed
