@@ -11,7 +11,7 @@
 #      ldap_whochange_pw => 'admin',
 #      mail_from         => 'admin@example.com',
 #      manage_git        => true,
-#      ldap_url          => ['ldap://#{ipa_ip}'],
+#      ldap_url          => ['ldap://ldap_address'],
 #    }
 #
 # @param system_owner system user account that own files
@@ -19,6 +19,8 @@
 # @param ldap_bindpw Password of the DN used to bind directory
 # @param ldap_base Base search where users are searched.
 # @param ldap_whochange_pw LDAP user that change the password
+# @param ldap_whochange_sshkey LDAP user that change the ssh key
+# @param ldap_filter Filter on reserched objects in LDAP
 # @param manage_git Install git if true, required if git is not installed by an other process.
 # @param manage_rootpath If true creates the path defined by $system_rootpath
 # @param system_rootpath Path where SSP is installed
