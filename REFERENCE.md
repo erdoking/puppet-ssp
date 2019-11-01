@@ -26,7 +26,7 @@ class { 'ssp' :
   ldap_whochange_pw => 'admin',
   mail_from         => 'admin@example.com',
   manage_git        => true,
-  ldap_url          => ['ldap://#{ipa_ip}'],
+  ldap_url          => ['ldap://ldap_address'],
 }
 ```
 
@@ -63,6 +63,22 @@ Base search where users are searched.
 Data type: `String[1]`
 
 LDAP user that change the password
+
+##### `ldap_whochange_sshkey`
+
+Data type: `String[1]`
+
+LDAP user that change the ssh key
+
+Default value: $ldap_whochange_pw
+
+##### `ldap_filter`
+
+Data type: `String[1]`
+
+Filter on reserched objects in LDAP
+
+Default value: '(&(objectClass=person)($ldap_login_attribute={login}))'
 
 ##### `manage_git`
 
@@ -448,20 +464,4 @@ Data type: `Boolean`
 Notify users anytime their sshPublicKey is changed
 
 Default value: `false`
-
-##### `ldap_filter`
-
-Data type: `String[1]`
-
-
-
-Default value: '(&(objectClass=person)($ldap_login_attribute={login}))'
-
-##### `ldap_whochange_sshkey`
-
-Data type: `String[1]`
-
-
-
-Default value: $ldap_whochange_pw
 
