@@ -1,6 +1,6 @@
 {
   "name": "adullact-ssp",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "ADULLACT",
   "summary": "Web interface to change and reset password in an LDAP directory http://ltb-project.org",
   "license": "AGPL-3.0",
