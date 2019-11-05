@@ -8,7 +8,7 @@
 #      ldap_binddn       => 'uid=bindssp,cn=sysaccounts,cn=etc,dc=example,dc=com',
 #      ldap_bindpw       => 'bindpw',
 #      ldap_base         => 'cn=users,cn=accounts,dc=example,dc=com',
-#      ldap_whochange_pw => 'admin',
+#      ldap_whochange_pw => 'manager',
 #      mail_from         => 'admin@example.com',
 #      manage_git        => true,
 #      ldap_url          => ['ldap://ldap_address'],
@@ -18,8 +18,14 @@
 # @param ldap_binddn DN used to bind directory
 # @param ldap_bindpw Password of the DN used to bind directory
 # @param ldap_base Base search where users are searched.
-# @param ldap_whochange_pw LDAP user that change the password
-# @param ldap_whochange_sshkey LDAP user that change the ssh key
+# @param ldap_whochange_pw
+#   who change the password ?
+#     * user: the user itself
+#     * manager: the above binddn
+# @param ldap_whochange_sshkey
+#   who change the SSH key ?
+#     * user: the user itself
+#     * manager: the above binddn
 # @param ldap_filter Filter on reserched objects in LDAP
 # @param manage_git Install git if true, required if git is not installed by an other process.
 # @param manage_rootpath If true creates the path defined by $system_rootpath
@@ -77,7 +83,7 @@ class ssp (
   String[1] $ldap_binddn,
   String[1] $ldap_bindpw,
   String[1] $ldap_base,
-  String[1] $ldap_whochange_pw,
+  Enum['user','manager'] $ldap_whochange_pw = 'user',
   String[1] $ldap_filter = '(&(objectClass=person)($ldap_login_attribute={login}))',
   Boolean $manage_git = false,
   Boolean $manage_rootpath = false,
@@ -126,7 +132,7 @@ class ssp (
   Boolean $pwd_no_special_at_ends = false,
   Boolean $allow_change_sshkey = false,
   String $change_sshkey_attribute = 'sshPublicKey',
-  String[1] $ldap_whochange_sshkey = $ldap_whochange_pw,
+  Enum['user','manager'] $ldap_whochange_sshkey = 'user',
   Boolean $notify_on_sshkey_change = false,
 ) {
 

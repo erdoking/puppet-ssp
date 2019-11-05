@@ -11,7 +11,6 @@ describe 'ssp class' do
           ldap_binddn       => 'uid=bindssp,cn=sysaccounts,cn=etc,dc=example,dc=com',
           ldap_bindpw       => 'bindpw',
           ldap_base         => 'cn=users,cn=accounts,dc=example,dc=com',
-          ldap_whochange_pw => 'admin',
           mail_from         => 'admin@example.com',
           manage_git        => true,
           ldap_url          => ['ldap://#{ipa_ip}'],

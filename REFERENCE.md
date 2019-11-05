@@ -23,7 +23,7 @@ class { 'ssp' :
   ldap_binddn       => 'uid=bindssp,cn=sysaccounts,cn=etc,dc=example,dc=com',
   ldap_bindpw       => 'bindpw',
   ldap_base         => 'cn=users,cn=accounts,dc=example,dc=com',
-  ldap_whochange_pw => 'admin',
+  ldap_whochange_pw => 'manager',
   mail_from         => 'admin@example.com',
   manage_git        => true,
   ldap_url          => ['ldap://ldap_address'],
@@ -60,17 +60,23 @@ Base search where users are searched.
 
 ##### `ldap_whochange_pw`
 
-Data type: `String[1]`
+Data type: `Enum['user','manager']`
 
-LDAP user that change the password
+who change the password ?
+  * user: the user itself
+  * manager: the above binddn
+
+Default value: 'user'
 
 ##### `ldap_whochange_sshkey`
 
-Data type: `String[1]`
+Data type: `Enum['user','manager']`
 
-LDAP user that change the ssh key
+who change the SSH key ?
+  * user: the user itself
+  * manager: the above binddn
 
-Default value: $ldap_whochange_pw
+Default value: 'user'
 
 ##### `ldap_filter`
 
