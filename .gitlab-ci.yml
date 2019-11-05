@@ -78,6 +78,21 @@ acceptance Puppet5 Debian9:
   tags:
     - puppet-tests
 
+acceptance Puppet5 Debian10:
+  stage: 'acceptance'
+  variables:
+    RBENV_VERSION: '2.5.1'
+    PUPPET_INSTALL_TYPE: 'agent'
+    BEAKER_IS_PE: 'no'
+    BEAKER_PUPPET_COLLECTION: 'puppet5'
+    BEAKER_debug: 'true'
+    BEAKER_setfile: 'debian10-64ssp.m{hostname=ssp.example.com}-centos7-64ipa.a{hostname=ipa.example.com}'
+    BEAKER_HYPERVISOR: 'docker'
+  script:
+    - bundle exec rake beaker
+  tags:
+    - puppet-tests
+
 acceptance Puppet6 Ubuntu1604:
   stage: 'acceptance'
   variables:
