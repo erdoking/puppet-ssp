@@ -7,9 +7,9 @@ will likely make it into a release a little more quickly.
 
 2. Create a separate branch for your change.
 
-3. We only take pull requests with passing tests, and documentation. You can also execute them locally. 
+3. We only take merge requests with passing tests, and documentation. You can also execute them locally.
 
-4. Checkout [Voxpupuli review docs](https://voxpupuli.org/docs/#reviewing-a-module-pr). We try to 
+4. Checkout [Voxpupuli review docs](https://voxpupuli.org/docs/#reviewing-a-module-pr). We try to
    use it to review a merge request and the [official styleguide](https://puppet.com/docs/puppet/6.0/style_guide.html).
    They provide some guidance for new code that might help you before you submit a merge request.
 
