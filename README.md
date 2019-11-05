@@ -44,7 +44,7 @@ The following code :
     ldap_binddn       => 'uid=bindssp,cn=sysaccounts,cn=etc,dc=example,dc=com',
     ldap_bindpw       => 'bindpw',
     ldap_base         => 'cn=users,cn=accounts,dc=example,dc=com',
-    ldap_whochange_pw => 'admin',
+    ldap_whochange_pw => 'manager',
     mail_from         => 'admin@example.com',
     manage_git        => true,
     ldap_url          => ['ldap://10.10.10.10'],
