@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.2.0
+
+ * change data type of `ldap_whochange_*` parameters
+
 ## Release 1.1.0
 
  * complete puppet strings docs #8
