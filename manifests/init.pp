@@ -46,6 +46,7 @@
 #   Hide some messages to not disclose sensitive information.
 #   These messages will be replaced by value of obscure_failure_messages.
 # @param default_action Default action displayed by the webui
+# @param use_change enable (with true) or disable (with false) standard change form usage.
 # @param use_tokens enable (with true) or disable (with false) tokens usage.
 # @param crypt_tokens crypt tokens (with true) or no (with false)
 # @param token_lifetime When token are used, the token lifetime.
@@ -102,6 +103,7 @@ class ssp (
   Optional[String[1]] $login_forbidden_chars = undef,
   Optional[String[1]] $obscure_failure_messages = undef,
   Enum['change','sendtoken'] $default_action = 'change',
+  Boolean $use_change = true,
   Boolean $use_tokens = true,
   Boolean $crypt_tokens = true,
   Integer $token_lifetime = 3600,
@@ -141,6 +143,17 @@ class ssp (
   $_keynumber = fqdn_rand(50, 'tocken_seed')
   $_keyphrase = "${facts['hostname']}${_keynumber}"
   $_ldap_urls = join($ldap_url, ' ')
+
+  # define the default action to unused one is not possible
+  if ! $use_change and $default_action == 'change' {
+    fail('$use_change is set to false and $default_action is set to "change"')
+  }
+  if ! $use_tokens and $default_action == 'sendtoken' {
+    fail('$use_tokens is set to false and $default_action is set to "sendtoken"')
+  }
+
+  # The two others actions available with SSP are not handled by this Puppet module.
+  # They are hard coded to false, and not proposed in Enum data type for $default_action
   $_use_sms = false
   $_use_questions = false
 

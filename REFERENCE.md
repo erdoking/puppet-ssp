@@ -223,6 +223,14 @@ Default action displayed by the webui
 
 Default value: 'change'
 
+##### `use_change`
+
+Data type: `Boolean`
+
+enable (with true) or disable (with false) standard change form usage.
+
+Default value: `true`
+
 ##### `use_tokens`
 
 Data type: `Boolean`

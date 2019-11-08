@@ -52,6 +52,10 @@ $pwd_show_policy_pos = "<%= $ssp::pwd_show_policy_pos %>";
 # disallow use of the only special character as defined in `$pwd_special_chars` at the beginning and end
 $pwd_no_special_at_ends = <%= $ssp::pwd_no_special_at_ends %>;
 
+## Standard change
+# Use standard change form?
+$use_change = <%= $ssp::use_change %>;
+
 # Who changes the password?
 # Also applicable for question/answer save
 # user: the user itself
