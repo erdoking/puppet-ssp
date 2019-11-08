@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.3.0
+
+ * add parameter `use_change` #16
+
 ## Release 1.2.1
 
  * fix some docs issues #14
