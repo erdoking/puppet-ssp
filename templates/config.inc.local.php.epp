@@ -37,7 +37,7 @@ $pwd_special_chars = "<%= $ssp::pwd_special_chars %>";
 <% } -%>
 <% if $ssp::pwd_forbidden_chars { -%>
 # Forbidden characters
-#$pwd_forbidden_chars = "<%= $ssp::pwd_forbidden_chars %>";
+$pwd_forbidden_chars = "<%= $ssp::pwd_forbidden_chars %>";
 <% } -%>
 # Don't reuse the same password as currently
 $pwd_no_reuse = <%= $ssp::pwd_no_reuse %>;
@@ -51,6 +51,9 @@ $pwd_show_policy = "<%= $ssp::pwd_show_policy %>";
 $pwd_show_policy_pos = "<%= $ssp::pwd_show_policy_pos %>";
 # disallow use of the only special character as defined in `$pwd_special_chars` at the beginning and end
 $pwd_no_special_at_ends = <%= $ssp::pwd_no_special_at_ends %>;
+
+## Default action displayed by WebUI
+$default_action = "<%= $ssp::default_action %>";
 
 ## Standard change
 # Use standard change form?
@@ -104,8 +107,6 @@ $mail_smtp_port = <%= $ssp::mail_smtp_port %>;
 $mail_smtp_auth = <%= $ssp::mail_smtp_auth %>;
 <% if $ssp::mail_smtp_auth { -%>
 $mail_smtp_user = '<%= $ssp::mail_smtp_user %>';
-<% } -%>
-<% if $ssp::mail_smtp_auth { -%>
 $mail_smtp_pass = '<%= $ssp::mail_smtp_pass %>';
 <% } -%>
 
