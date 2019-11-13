@@ -54,7 +54,7 @@ The following code :
 
 ## Reference
 
-Details in [REFERENCE.md](REFERENCE.md).
+Details in [REFERENCE.md](https://gitlab.adullact.net/adullact/puppet-ssp/blob/master/REFERENCE.md).
 
 ## Limitations
 
@@ -64,11 +64,11 @@ This module does not handle usage of questions and SMS.
 
 Home at URL https://gitlab.adullact.net/adullact/puppet-ssp
 
-Issues and MR are welcome. [CONTRIBUTING.md](CONTRIBUTING.md) gives some guidance about contributing process. If you follow these contributing guidelines your patch will likely make it into a release a little more quickly.
+Issues and MR are welcome. [CONTRIBUTING.md](https://gitlab.adullact.net/adullact/puppet-ssp/blob/master/CONTRIBUTING.md) gives some guidance about contributing process. If you follow these contributing guidelines your patch will likely make it into a release a little more quickly.
 
 ## Release Notes/Contributors/Etc.
 
-Details in [CHANGELOG.md](CHANGELOG.md).
+Details in [CHANGELOG.md](https://gitlab.adullact.net/adullact/puppet-ssp/blob/master/CHANGELOG.md).
 
 
 ```
