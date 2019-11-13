@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 1.4.0
+
+ * missing `default_action` in template for local configuration #19
+ * FIx README.md with absolutes URLs #20
+
 ## Release 1.3.0
 
  * add parameter `use_change` #16
