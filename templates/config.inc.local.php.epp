@@ -109,6 +109,8 @@ $mail_smtp_auth = <%= $ssp::mail_smtp_auth %>;
 $mail_smtp_user = '<%= $ssp::mail_smtp_user %>';
 $mail_smtp_pass = '<%= $ssp::mail_smtp_pass %>';
 <% } -%>
+$mail_smtp_autotls = "<%= $ssp::mail_smtp_autotls %>;
+$mail_smtp_secure = '<%= $ssp::mail_smtp_secure %>';
 
 ## SMS
 # Use sms

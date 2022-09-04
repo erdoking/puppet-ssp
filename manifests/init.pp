@@ -61,6 +61,8 @@
 # @param mail_smtp_auth Enable SMTP auth is true
 # @param mail_smtp_user SMTP user used with SMTP auth
 # @param mail_smtp_pass SMTP password used with SMTP auth
+# @param mail_smtp_autotls SMTP use autotls
+# @param mail_smtp_secure SMTP encryption protocol 
 # @param pwd_min_length Local password policy applied before directory password policy. Minimal length.
 # @param pwd_max_length Local password policy applied before directory password policy. Maximum length
 # @param pwd_min_lower Local password policy applied before directory password policy. Minimal lower characters
@@ -118,6 +120,8 @@ class ssp (
   Boolean $mail_smtp_auth = false,
   Optional[String[1]] $mail_smtp_user = undef,
   Optional[String[1]] $mail_smtp_pass = undef,
+  Boolean $mail_smtp_autotls = true,
+  String[1] $mail_smtp_secure = 'tls',
   Integer $pwd_min_length = 0,
   Integer $pwd_max_length = 0,
   Integer $pwd_min_lower = 0,
