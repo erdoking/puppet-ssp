@@ -93,6 +93,11 @@ $token_lifetime = "<%= $ssp::token_lifetime %>";
 # with ciphered tokens a keyphrase is needed
 $keyphrase = "<%= $keyphrase %>";
 
+<% if $ssp::reset_url { -%>
+# Reset URL (if behind a reverse proxy)
+$reset_url = "<%= $ssp::reset_url %>";
+<% } -%>
+
 ## Mail
 # Who the email should come from
 $mail_from = "<%= $ssp::mail_from %>";

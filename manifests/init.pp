@@ -50,6 +50,7 @@
 # @param use_tokens enable (with true) or disable (with false) tokens usage.
 # @param crypt_tokens crypt tokens (with true) or no (with false)
 # @param token_lifetime When token are used, the token lifetime.
+# @param reset_url Reset URL (if behind a reverse proxy) 
 # @param mail_address_use_ldap Mail is got from LDAP.
 # @param mail_from Who the email should come from
 # @param mail_from_name Name displayed with mail_from
@@ -109,6 +110,7 @@ class ssp (
   Boolean $use_tokens = true,
   Boolean $crypt_tokens = true,
   Integer $token_lifetime = 3600,
+  Optional[String[1]] $reset_url = undef,
   Boolean $mail_address_use_ldap = true,
   Pattern['^.+@.+'] $mail_from = "admin@${facts['networking']['domain']}",
   String $mail_from_name = 'Self Service Password',
